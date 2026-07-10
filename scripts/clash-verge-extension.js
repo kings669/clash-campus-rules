@@ -3,20 +3,19 @@
  *
  * This script is idempotent: running it repeatedly replaces the managed
  * provider/group/rule instead of appending another copy. It is therefore safe
- * to use as a global extension script when airport subscriptions are updated.
+ * to attach to a subscription profile that is updated regularly.
  */
 
 const SETTINGS = {
   providerName: "campus",
   groupName: "🏫校园服务",
-  fallbackGroup: "🚀 节点选择",
+
+  // Fill in the exact name of the main proxy group in your subscription.
+  // Example: "节点选择". Leave empty to offer DIRECT only.
+  fallbackGroup: "",
   ruleUrl:
     "https://raw.githubusercontent.com/kings669/clash-campus-rules/main/campus.list",
   rulePath: "./ruleset/campus.list",
-
-  // Empty means apply to every profile. To limit it, add exact profile names:
-  // profileNames: ["订阅 A", "订阅 B"],
-  profileNames: [],
 };
 
 function isManagedRule(rule) {
@@ -29,15 +28,8 @@ function isManagedRule(rule) {
   return parts[0] === "RULE-SET" && parts[1] === SETTINGS.providerName;
 }
 
-function shouldApply(profileName) {
-  return (
-    SETTINGS.profileNames.length === 0 ||
-    SETTINGS.profileNames.indexOf(profileName) !== -1
-  );
-}
-
-function main(config, profileName) {
-  if (!config || typeof config !== "object" || !shouldApply(profileName)) {
+function main(config) {
+  if (!config || typeof config !== "object") {
     return config;
   }
 
@@ -80,6 +72,7 @@ function main(config, profileName) {
 
   const campusChoices = ["DIRECT"];
   if (
+    SETTINGS.fallbackGroup &&
     SETTINGS.fallbackGroup !== SETTINGS.groupName &&
     availableNames[SETTINGS.fallbackGroup]
   ) {
