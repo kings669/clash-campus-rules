@@ -15,7 +15,7 @@ const SETTINGS = {
   rulePath: "./ruleset/campus.list",
 
   // Empty means apply to every profile. To limit it, add exact profile names:
-  // profileNames: ["机场订阅 A", "机场订阅 B"],
+  // profileNames: ["订阅 A", "订阅 B"],
   profileNames: [],
 };
 

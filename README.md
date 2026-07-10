@@ -47,7 +47,7 @@ rules:
 
 ## 推荐：使用扩展脚本
 
-机场订阅更新时，直接修改订阅生成的 YAML 可能会被覆盖；如果扩展脚本只是反复使用
+代理订阅更新时，直接修改订阅生成的 YAML 可能会被覆盖；如果扩展脚本只是反复使用
 `concat` 追加内容，也可能产生重复规则。仓库提供的
 [`scripts/clash-verge-extension.js`](scripts/clash-verge-extension.js) 会在每次运行时执行以下操作：
 
@@ -55,33 +55,33 @@ rules:
 2. 删除所有同名的 `🏫校园服务` 策略组，再创建一个；
 3. 删除所有旧的 `RULE-SET,campus,...` 规则，再在规则列表顶部插入一条。
 
-因此，无论更新机场订阅或重复执行脚本多少次，最终都只会保留一份校园规则。
+因此，无论更新代理订阅或重复执行脚本多少次，最终都只会保留一份校园规则。
 
 ### 安装步骤
 
 1. 打开 [`scripts/clash-verge-extension.js`](scripts/clash-verge-extension.js)，复制完整内容。
 2. 在 Clash Verge Rev 中打开“设置 → 配置 → 全局扩展脚本”，粘贴并保存。不同版本的界面名称
    可能略有差异；也可以右键单个订阅，选择“编辑扩展/脚本”，让它只对该订阅生效。
-3. 查看脚本顶部的 `SETTINGS`，将 `fallbackGroup` 修改为机场订阅中真实存在的主策略组名称：
+3. 查看脚本顶部的 `SETTINGS`，将 `fallbackGroup` 修改为订阅配置中真实存在的主策略组名称：
 
    ```javascript
    fallbackGroup: "🚀 节点选择",
    ```
 
-4. 如果只想应用于指定机场订阅，在 `profileNames` 中填写 Clash Verge 显示的完整配置名称；
+4. 如果只想应用于指定订阅，在 `profileNames` 中填写 Clash Verge 显示的完整配置名称；
    保持空数组则对所有配置生效：
 
    ```javascript
-   profileNames: ["机场订阅 A", "机场订阅 B"],
+   profileNames: ["订阅 A", "订阅 B"],
    ```
 
 5. 保存脚本，重新启用扩展或刷新当前订阅，然后在“代理”页面找到 `🏫校园服务`：
    - 连接南航校园网时选择 `DIRECT`；
-   - 离开校园网时可选择脚本配置的机场主策略组。
+   - 离开校园网时可选择脚本配置的备用代理组。
 
 ### 验证是否去重
 
-连续刷新机场订阅两次，再打开 Clash Verge 的运行配置，确认只有：
+连续刷新代理订阅两次，再打开 Clash Verge 的运行配置，确认只有：
 
 ```yaml
 rule-providers:
