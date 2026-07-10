@@ -1,0 +1,20 @@
+rule-providers:
+  campus:
+    behavior: domain
+    format: text
+    interval: 86400
+    path: ./ruleset/campus.list
+    type: http
+    url: https://raw.githubusercontent.com/kings669/clash-campus-rules/main/campus.list
+
+proxy-groups:
+  - name: 校园服务
+    type: select
+    proxies:
+      - DIRECT
+      # 改成你已有的代理组名称
+      - 节点选择
+
+# 将这条规则合并到现有 rules 中，并放在 GEOIP、MATCH 等兜底规则之前。
+rules:
+  - RULE-SET,campus,校园服务
