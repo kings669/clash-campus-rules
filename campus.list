@@ -1,56 +1,41 @@
-# Nanjing University of Aeronautics and Astronautics (NUAA)
+# Strict allowlist: NUAA-owned sites and subscription platforms confirmed by
+# the NUAA Library digital-resource catalog. Last reviewed: 2026-07-10.
+
+# Nanjing University of Aeronautics and Astronautics
 +.nuaa.edu.cn
 
-# IEEE / ACM
+# IEEE Xplore / IEL
 +.ieee.org
-+.ieee.org.cn
-+.acm.org
 
-# Citation indexes and discovery
+# Web of Science / Inspec
 +.webofscience.com
 +.clarivate.com
-+.scopus.com
 
-# Elsevier
+# Elsevier ScienceDirect (including subscribed Woodhead collections)
 +.sciencedirect.com
-+.elsevier.com
-+.elsevierhealth.com
 
-# Springer Nature
+# SpringerLink
 +.springer.com
-+.springernature.com
-+.nature.com
-+.natureasia.com
 
-# Wiley
+# Wiley Online Library
 +.wiley.com
-+.wiley-vch.de
 
-# Taylor & Francis
+# Taylor & Francis / CRC Press
 +.tandfonline.com
 +.taylorfrancis.com
 
-# Major scholarly societies and publishers
-+.acs.org
-+.rsc.org
+# AIP / APS / IOP
 +.aps.org
 +.aip.org
-+.iop.org
 +.iopscience.com
-+.aaas.org
-+.science.org
-+.cell.com
-+.cambridge.org
-+.oup.com
-+.sagepub.com
-+.degruyter.com
+
+# Emerald
 +.emerald.com
 
-# Academic databases
-+.jstor.org
-+.proquest.com
-+.ebsco.com
+# EBSCOhost
 +.ebscohost.com
+
+# Chinese full-text databases listed by NUAA
 +.cnki.net
 +.wanfangdata.com.cn
 +.cqvip.com
